@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -95,6 +96,8 @@ void piramide(int n)
 	}
 }
 
+
+
 int main(int argc, char** argv) {
 	
 	int option=0;
@@ -127,12 +130,61 @@ int main(int argc, char** argv) {
 					cin>>size;
 				}
 				piramide(size);
-				break;
-				
-				
+				break;	
 			} 
 			    
 			case 3:{
+
+				int size;
+				cout<<"Ingrese un numero par: ";
+				cin>>size;
+				
+				while(size<=0||size%2!=0)
+				{
+					cout<<"Error, porfavor ingrese un numero par: ";
+					cin>>size;
+				}
+				int juego[size];
+				
+				for(int i=0;i<size;i++)
+				{
+					juego[i]=(-50)+rand()%((51)-(-50));
+				}
+				
+				int ronda=2;
+				
+				int usados[ronda*2];
+				
+				int jugador1,jugador2,puntaje1=0,puntaje2=0;
+				
+				for(int i=0;i<ronda;i++)
+				{
+					cout<<"J1 escoge: ";
+					cin>>jugador1;
+					cout<<"Obtuvo: "<<juego[jugador1]<<endl;
+					puntaje1+=juego[jugador1];
+					
+					cout<<"J2 escoge: ";
+					cin>>jugador2;
+					cout<<"Obtuvo: "<<juego[jugador2]<<endl;
+					puntaje2+=juego[jugador2];
+					
+					if(i==ronda-1)
+					{
+						cout<<"FINAL - [PTS J1: "<<puntaje1<<" <-> PTS J2: "<<puntaje2<<"]"<<endl;
+					}
+					else
+					{
+						cout<<"Ronda"<<i+1<<" - [PTS J1: "<<puntaje1<<" <-> PTS J2: "<<puntaje2<<"]"<<endl;
+					}
+					
+				}
+				cout<<"Arreglo utilizado: [";
+				for(int i=0;i<size;i++)
+				{
+					cout<<juego[i]<<" ";
+				}
+				cout<<"]"<<endl;
 
 				break;
 			}
