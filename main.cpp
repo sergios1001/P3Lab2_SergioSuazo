@@ -61,7 +61,39 @@ int mcd(int a,int b)
 	return valor;
 }
 
-
+void piramide(int n)
+{
+	int pascal[n][n];
+	for(int i=0;i<n;i++)
+	{
+		if(i==0)
+		{
+			pascal[i][0]=1;
+		}
+		else if(i==1)
+		{
+			pascal[i][0]=1;
+			pascal[i][1]=1;
+		}
+		else
+		{
+			for(int j=1;j<i;j++)
+			{
+				pascal[i][i]=1;
+				pascal[i][0]=1;
+				pascal[i][j]=pascal[i-1][j]+pascal[i-1][j-1];
+			}
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<i+1;j++)
+		{
+			cout<<pascal[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
 
 int main(int argc, char** argv) {
 	
@@ -86,7 +118,15 @@ int main(int argc, char** argv) {
 			}
 			case 2:{
 
-				
+				int size;
+				cout<<"Ingrese el tamaño de la piramide: ";
+				cin>>size;
+				while(size<1)
+				{
+					cout<<"Ingrese un tamaño superior a 0: ";
+					cin>>size;
+				}
+				piramide(size);
 				break;
 				
 				
