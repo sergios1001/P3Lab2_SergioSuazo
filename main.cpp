@@ -109,6 +109,11 @@ int main(int argc, char** argv) {
 				int n,euler=0;
 				cout<<"Ingrese el numero n: ";
 				cin>>n;
+				while(n<0)
+				{
+					cout<<"Ingrese un tamaño superior a 0: ";
+					cin>>n;
+				}
 				for(int i=n-1;i>=1;i--)
 				{
 					if(mcd(n,i)==1)
@@ -116,7 +121,15 @@ int main(int argc, char** argv) {
 						euler++;
 					}
 				}
-				cout<<"phi("<<n<<") = "<<euler<<endl;
+				if(n==1)
+				{
+					cout<<"phi("<<n<<") = 1"<<endl;
+				}
+				else
+				{
+					cout<<"phi("<<n<<") = "<<euler<<endl;	
+				}
+				
 				break;
 			}
 			case 2:{
